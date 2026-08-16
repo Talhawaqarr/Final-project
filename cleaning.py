@@ -46,6 +46,17 @@ def drop_missing_values(df):
     df = df.dropna()
     return df
 
+def duplicate_rows(df):
+    #dropping the duplicate rows
+    before = len(df)
+
+    df = df.drop_duplicates()
+
+    after = len(df)
+
+    print(f"Removed {before - after} duplicate rows.")
+    return df
+
 
 #calling the functions to clean the data while using try and except to handle any errors that may occur
 try:
@@ -54,6 +65,7 @@ try:
     df = convert_data_types(df)
     df = to_numeric(df)
     df = drop_missing_values(df)
+    df = duplicate_rows(df)
     print("Data cleaned successfully.")
 except Exception as e:
     print(f"Error: {e}")
@@ -67,3 +79,5 @@ try:
 except Exception as e:
     print(f"Error: {e}")
     print("Error: Could not save the cleaned data. Please check the data and try again.")
+
+#the data is now cleaned and saved to a new csv file, we can now use it for analysis
