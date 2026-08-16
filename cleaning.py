@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 try:
-    df = pd.read_csv("final project/gold_stock.csv")
+    df = pd.read_csv(r"D:\python learning\final project\gold_stock.csv")
     print("Dataset loaded successfully.")
 
 except FileNotFoundError:
@@ -63,6 +63,7 @@ try:
     df = clean_data(df)
     df = fix_column(df)
     df = convert_data_types(df)
+    print(f"Data info:\n{df.info()}")
     df = to_numeric(df)
     df = drop_missing_values(df)
     df = duplicate_rows(df)
@@ -74,8 +75,8 @@ except Exception as e:
 
 #now that the data is cleaned, we will save it to a new csv file
 try:
-    df.to_csv("final project/gold_stock_cleaned.csv", index=False)
-    print("Cleaned data saved to gold_stock_cleaned.csv")
+    df.to_csv(r"D:\python learning\final project\gold_stock_cleaned_2ndtry.csv", index=False)
+    print("Cleaned data saved to gold_stock_cleaned_2ndtry.csv")
 except Exception as e:
     print(f"Error: {e}")
     print("Error: Could not save the cleaned data. Please check the data and try again.")
